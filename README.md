@@ -2,14 +2,14 @@
 
 ## Contract Deployment
 
-- gunakan wallet baru atau wallet khusus testnet
-- Bridge minimal 0.01 Sepolia ETH to Zero Network via [bridge](https://bridge.zero.network/)
-- Jika sudah
-- Open terminal, rekomendasi pakai codespace atau gitpod [codespace](https://github.com/codespaces), worked fine, you can use [gitpod](https://gitpod.io/workspaces) as well
+-- gunakan wallet baru atau wallet khusus testnet
+-- Bridge minimal 0.01 Sepolia ETH to Zero Network via [bridge](https://bridge.zero.network/)
+-- Jika sudah
+-- Open terminal, rekomendasi pakai codespace atau gitpod [codespace](https://github.com/codespaces), worked fine, you can use [gitpod](https://gitpod.io/workspaces) as well
 ```bash
-wget https://raw.githubusercontent.com/dxzenith/zero-network/main/contract.sh && chmod +x contract.sh && ./contract.sh
+wget https://raw.githubusercontent.com/choir94/Zeronetwork/main/contract.sh && chmod +x contract.sh && ./contract.sh
 ```
-- In the middle of the code, it will show something like this
+-- Proses instalasi akan muncul seperti ini
 ```bash
 ? What do you want to do? … 
   Create a JavaScript project
@@ -18,7 +18,7 @@ wget https://raw.githubusercontent.com/dxzenith/zero-network/main/contract.sh &&
   Create an empty hardhat.config.js
   Quit
 ```
-- Choose `Create a TypeScript project` option then press `Enter` 4 times
-- Done ✅
+-- Kemudian pilih `Create a TypeScript project` tekan `Enter` kurang lebih 4 kali
+-- Done ✅
 ---
-- Make sure to follow [ZunXBT](ZunXBT) on X
+-- Make sure to follow [t.me/airdrop_node](airdrop node) on tele
