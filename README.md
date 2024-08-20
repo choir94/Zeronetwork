@@ -8,7 +8,7 @@
 
 -- Jika sudah
 
--- Open terminal, rekomendasi pakai codespace atau gitpod [codespace](https://github.com/codespaces), worked fine, you can use [gitpod](https://gitpod.io/workspaces) as well
+-- Open terminal, rekomendasi pakai codespace atau gitpod [codespace](https://github.com/codespaces),   [gitpod](https://gitpod.io/workspaces) atau bisa pakai vps
 ```bash
 wget https://raw.githubusercontent.com/choir94/Zeronetwork/main/contract.sh && chmod +x contract.sh && ./contract.sh
 ```
