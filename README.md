@@ -20,5 +20,5 @@ wget https://raw.githubusercontent.com/choir94/Zeronetwork/main/contract.sh && c
 ```
 -- Kemudian pilih `Create a TypeScript project` tekan `Enter` kurang lebih 4 kali
 -- Done ✅
----
--- Make sure to follow [t.me/airdrop_node](airdrop node) on tele
+--
+-- diskusi channel https://t.me/airdrop_node
