@@ -1,41 +1,43 @@
 #!/bin/bash
 
-BOLD_PINK='\033[1;35m'
+curl -s https://raw.githubusercontent.com/choir94/Airdropguide/refs/heads/main/logo.sh | bash
+sleep 5
+
+BOLD_LIGHT_BLUE='\033[1;36m'  # Warna biru muda tebal
 RESET_COLOR='\033[0m'
 
 install_node() {
-  echo -e "${BOLD_PINK}Installing NVM...${RESET_COLOR}"
+  echo -e "${BOLD_LIGHT_BLUE}Menginstal NVM...${RESET_COLOR}"
   curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
 
   export NVM_DIR="$HOME/.nvm"
   [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 
-  echo -e "${BOLD_PINK}Installing Node.js version 20...${RESET_COLOR}"
+  echo -e "${BOLD_LIGHT_BLUE}Menginstal Node.js versi 20...${RESET_COLOR}"
   nvm install 20
   nvm use 20
 }
 
 if ! command -v node &> /dev/null; then
-  echo -e "${BOLD_PINK}Node.js is not installed. Installing now...${RESET_COLOR}"
+  echo -e "${BOLD_LIGHT_BLUE}Node.js belum terinstal. Menginstal sekarang...${RESET_COLOR}"
   install_node
 elif [[ "$(node -v)" != "v20."* ]]; then
-  echo -e "${BOLD_PINK}Node.js version is not 20. Installing the correct version...${RESET_COLOR}"
+  echo -e "${BOLD_LIGHT_BLUE}Versi Node.js bukan 20. Menginstal versi yang benar...${RESET_COLOR}"
   install_node
 else
-  echo -e "${BOLD_PINK}Node.js is already installed with the correct version.${RESET_COLOR}"
+  echo -e "${BOLD_LIGHT_BLUE}Node.js sudah terinstal dengan versi yang benar.${RESET_COLOR}"
 fi
 
-echo -e "${BOLD_PINK}Setting up Hardhat project (May take 2-3 mins)...${RESET_COLOR}"
+echo -e "${BOLD_LIGHT_BLUE}Menyiapkan proyek Hardhat (Dapat memakan waktu 2-3 menit)...${RESET_COLOR}"
 echo
 npm install -D @matterlabs/hardhat-zksync-deploy hardhat zksync-ethers ethers > /dev/null 2>&1
 npm install -D @matterlabs/hardhat-zksync-solc > /dev/null 2>&1
 npm install dotenv > /dev/null 2>&1
 npx hardhat
 echo
-read -p "Enter your private key (without 0x): " PRIVATE_KEY
+read -p "Masukkan private key Anda (tanpa 0x): " PRIVATE_KEY
 echo
 echo "PRIVATE_KEY=$PRIVATE_KEY" > .env
-
 
 rm -f contracts/Lock.sol
 mkdir -p contracts
@@ -46,12 +48,12 @@ pragma solidity ^0.8.17;
 contract SimpleStorage {
     uint private number;
 
-    // Function to set the number
+    // Fungsi untuk menetapkan angka
     function setNumber(uint _number) public {
         number = _number;
     }
 
-    // Function to get the number
+    // Fungsi untuk mendapatkan angka
     function getNumber() public view returns (uint) {
         return number;
     }
@@ -95,42 +97,42 @@ dotenv.config();
 const PRIVATE_KEY = process.env.PRIVATE_KEY || "";
 
 if (!PRIVATE_KEY) {
-  throw new Error("Wallet private key is not configured in .env file!");
+  throw new Error("Private key wallet tidak dikonfigurasi di file .env!");
 }
 
-// An example of a deploy script
+// Contoh skrip deployment
 export default async function (hre: HardhatRuntimeEnvironment) {
-  console.log(\`Running deploy script for the SimpleStorage contract\`);
+  console.log(\`Menjalankan skrip deployment untuk kontrak SimpleStorage\`);
 
-  // Initialize the wallet.
+  // Inisialisasi wallet.
   const wallet = new Wallet(PRIVATE_KEY);
 
-  // Create deployer object and load the artifact of the contract you want to deploy.
+  // Buat objek deployer dan muat artifact dari kontrak yang ingin Anda deploy.
   const deployer = new Deployer(hre, wallet);
   const artifact = await deployer.loadArtifact("SimpleStorage");
 
-  // Estimate contract deployment fee
+  // Perkiraan biaya deployment kontrak
   const deploymentFee = await deployer.estimateDeployFee(artifact, []);
 
   const parsedFee = ethers.formatEther(deploymentFee);
-  console.log(\`The deployment is estimated to cost \${parsedFee} ETH\`);
+  console.log(\`Biaya perkiraan deployment adalah \${parsedFee} ETH\`);
 
-  // Deploy contract
+  // Deploy kontrak
   const simpleStorageContract = await deployer.deploy(artifact, []);
 
-  // Show the contract info.
+  // Tampilkan informasi kontrak.
   const contractAddress = await simpleStorageContract.getAddress();
-  console.log(\`\${artifact.contractName} was deployed to \${contractAddress}\`);
+  console.log(\`\${artifact.contractName} telah di-deploy ke \${contractAddress}\`);
 }
 EOL
 
-echo -e "${BOLD_PINK}Compiling Contract...${RESET_COLOR}"
+echo -e "${BOLD_LIGHT_BLUE}Mengompilasi Kontrak...${RESET_COLOR}"
 echo
 npx hardhat compile
 echo
-echo -e "${BOLD_PINK}Deploying Contract on Zero Network...${RESET_COLOR}"
+echo -e "${BOLD_LIGHT_BLUE}Mendeploy Kontrak pada Jaringan Zero...${RESET_COLOR}"
 echo
 npx hardhat deploy-zksync --network zeroTestnet
 echo
-echo -e "${BOLD_PINK}Join airdrop node t.me/airdrop_node on tele${RESET_COLOR}"
+echo -e "${BOLD_LIGHT_BLUE}Gabung airdrop node t.me/airdrop_node di tele${RESET_COLOR}"
 echo
